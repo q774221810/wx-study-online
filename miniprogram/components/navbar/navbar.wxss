@@ -1,0 +1,21 @@
+/* components/navbar.wxss */
+.search{
+ display: inline-block;
+  color: white;
+  margin-left: 3%;
+  width: 360rpx;
+}
+.searchicon{
+  border-radius: 40rpx;
+  background-color: #000bb0;
+  margin-left:10px;
+  display: block;
+  width: 480rpx;
+}
+.nav{
+  background-color: #6b74f7;
+  
+}
+.placeholderStyle{
+ color: #9e9e9e;
+}

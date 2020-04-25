@@ -1,0 +1,63 @@
+<!--miniprogram/pages/mycourse/mycourse.wxml-->
+
+<view class="title" style="height:{{navHeight-navTop}}px;padding-top:{{navTop+5}}px;font-size:{{searchHeight-12}}px;">
+	学习概况
+</view>
+<view>
+	<scroll-view scroll-y="true" style="height:1110rpx;width:100%">
+		<view class="container" >
+			<ec-canvas id="mychart-dom-line" canvas-id="mychart-line"  class="ecan" ec="{{ ec }}"></ec-canvas>
+		</view>
+		<view style="position:relative;">
+			<view class="studydetail">
+				<view class="ditem">
+					<view class="item">今日学习</view>
+					<view class="value"><text>60</text>分钟</view>
+				</view>
+				<view class="line"></view>
+				<view class="ditem">
+					<view class="item">连续学习</view>
+					<view class="value"><text>1101</text>天</view>
+				</view>
+				<view class="line"></view>
+				<view class="ditem">
+					<view class="item">累计学习</view>
+					<view class="value"><text>24</text>小时</view>
+				</view>
+			</view>
+			<view class="signdetail">
+				<view style=" background-color: white;">
+					<view class="signbar">
+						<view class="signtitle">报名记录</view>
+						<view class="more"></view>
+					</view>
+					<view class="mycourse">
+						<view class="mycoursetitle"> 课程</view>
+						<view class="course">
+							<view class="coursedetail">
+								<view class="coursename">大学物理大学物理大学物理大学物理大学物理大学物理大学物理</view>
+								<view class="school">东北大学</view>
+								<view class="courseprogress">
+									<view class="progressnumber">20%</view>
+									<progress percent="20" stroke-width="12rpx" />
+								</view>
+							</view>
+							<image src="../../swiperimg/electric.jpg" class="courseimage"></image>
+						</view>
+						<view class="course">
+							<view class="coursedetail">
+								<view class="coursename">大学物理大学物理大学物理大学物理大学物理大学物理大学物理</view>
+								<view class="school">东北大学</view>
+								<view class="courseprogress">
+									<view class="progressnumber">20%</view>
+									<progress percent="20" stroke-width="12rpx" />
+								</view>
+							</view>
+							<image src="../../swiperimg/electric.jpg" class="courseimage"></image>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</scroll-view>
+</view>

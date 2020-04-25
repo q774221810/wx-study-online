@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "navbar": "../../../components/navbar/navbar",
+    "homeswiper": "../../../components/homeswiper/homeswiper",
+    "course" : "../../../components/course/course",
+    "sorticon" : "../../../components/sorticon/sorticon",
+    "sortcourse" : "../../../components/sortcourse/sortcourse"
+  },
+ 
+    "backgroundColor": "#eee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+ 
+}

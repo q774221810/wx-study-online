@@ -1,0 +1,124 @@
+/* miniprogram/pages/mycourse/mycourse.wxss */
+.title {
+  color: rgb(230, 230, 230);
+  background-color: #6b74f7;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.container {
+  margin: 0 10rpx 0 10rpx;
+  width: 730rpx;
+  height: 365rpx;
+}
+.ecan {
+  width: 100%;
+  height: 100%;
+}
+.studydetail{
+  display: flex;
+  margin: 0 75rpx 0 75rpx;
+  background-color: white;
+  justify-content: center; 
+  border-radius: 10rpx;
+  box-shadow:1px 1px 1px 1px rgb(172, 172, 172);
+  /* border:#aeaeae 1px solid ; */
+  position: absolute;
+  top: 0;
+}
+.ditem{
+  width: 200rpx;
+  height:200rpx ;
+  text-align: center;
+  font-size:30rpx ;
+ 
+}
+.item{
+  margin-top: 30rpx;
+}
+.value{
+  margin-top: 15rpx;
+  color: #aeaeae;
+}
+.value text{
+  font-size: 60rpx;
+  color: black;
+}
+.line{
+  background-color: rgb(167, 167, 167);
+  width: 2rpx;
+  margin:40rpx 0 40rpx 0;
+  height: 120rpx;
+}
+.signdetail{
+  padding-top: 100rpx;
+}
+.signbar{
+  padding-top: 120rpx;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20rpx 0 20rpx ;
+}
+.signtitle{
+  font-size: 50rpx;
+  font-weight: bold;
+}
+.more{
+  background-image: url("data:image/svg+xml,%3Csvg t='1587792290167' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='16701' width='200' height='200'%3E%3Cpath d='M127.798537 554.046075l85.334442 0 0-85.343652-85.334442 0L127.798537 554.046075zM127.798537 724.76817l85.334442 0 0-85.334442-85.334442 0L127.798537 724.76817zM127.798537 383.367981l85.334442 0 0-85.334442-85.334442 0L127.798537 383.367981zM298.521656 554.046075l597.45775 0 0-85.343652-597.45775 0L298.521656 554.046075zM298.521656 724.76817l597.45775 0 0-85.334442-597.45775 0L298.521656 724.76817zM298.521656 383.367981l597.45775 0 0-85.334442-597.45775 0L298.521656 383.367981z' p-id='16702' fill='%236b74f7'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+  height: 70rpx;
+  width: 70rpx;
+}
+.mycourse{
+  margin: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.mycoursetitle{
+  font-size: 38rpx;
+  border-left: 5px #6b74f7 solid;
+  padding-left: 5px;
+  font-weight: bold;
+}
+.course{
+  display: flex;
+  height: 200rpx;
+  align-items: center;
+}
+.coursedetail{
+  display: flex;
+  flex-direction: column;
+  width: 440rpx;
+  margin-right: 20rpx;
+  height: 150rpx;
+  position: relative;
+}
+.coursename{
+  width: 100%;
+  font-size: 40rpx;
+  overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.school{
+  font-size:30rpx;
+  color:#666;
+}
+.courseprogress{
+  position: absolute;
+  bottom: 0;
+  font-size: 28rpx;
+  color: #aeaeae;
+  width: 100%;
+}
+.progressnumber{
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+}
+
+.courseimage{
+  border-radius: 15rpx ;
+  height: 147rpx;
+  width: 250rpx;
+}
