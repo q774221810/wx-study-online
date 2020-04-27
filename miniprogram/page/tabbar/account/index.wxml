@@ -1,2 +1,24 @@
 <!--miniprogram/pages/account/account.wxml-->
-<text>study</text>
+<view style="background-color:white;height:{{windowHeight}}px">
+	<view class="persondetail" style="padding-top:{{navHeight + 10}}px ">
+		<image class="wxhead" src="../../uiimg/head.jpg"></image>
+		<view class="wxname">🐷啊</view>
+	</view>
+	<view style="padding-top:100rpx;">
+		<view class="item">
+			<view class="itemicon person"> </view><text>个人信息</text> <text class="righticon">＞</text>
+		</view>
+		<view class="item">
+			<view class="itemicon share"> </view><text>分享小程序</text> <text class="righticon">＞</text>
+		</view>
+		<view class="item">
+			<view class="itemicon mark"> </view><text>去评分</text> <text class="righticon">＞</text>
+		</view>
+		<view class="item">
+			<view class="itemicon suggestion"> </view><text>意见反馈</text> <text class="righticon">＞</text>
+		</view>
+		<view class="item">
+			<view class="itemicon about"> </view><text>关于网上学习系统</text> <text class="righticon">＞</text>
+		</view>
+	</view>
+</view>

@@ -20,10 +20,11 @@
 			<view class="course">
 				<image src="../../page/swiperimg/electric.jpg" class="sortimg"></image>
 				<view class="coursedetail">
-					<view class="coursename">大学物理大学物理大学物理大学物理大学物理</view>
+					<view class="coursename">大学物理</view>
 					<view class="school">陈晨</view>
-					<view class="number"><text style="margin-left:50rpx;">4396</text></view>
-					<view class="time">48学时</view>
+					<view class="number"><text style="margin-left:50rpx;">41396</text>
+						<view class="time">48学时</view>
+					</view>
 				</view>
 			</view>
 			<view class="line"></view>
@@ -34,8 +35,9 @@
 				<view class="coursedetail">
 					<view class="coursename">大学物理大学物理大学物理大学物理大学物理</view>
 					<view class="school">陈晨</view>
-					<view class="number"><text style="margin-left:50rpx;">4396</text></view>
-					<view class="time">48学时</view>
+					<view class="number"><text style="margin-left:50rpx;">4396</text>
+						<view class="time">48学时</view>
+					</view>
 				</view>
 			</view>
 			<view class="line"></view>

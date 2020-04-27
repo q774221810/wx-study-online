@@ -6,7 +6,7 @@
 <homeswiper class="homeswiper"></homeswiper>
 <sorticon></sorticon>
 <view>
-<course></course>
+<newestCourse></newestCourse>
 </view>
 <sortcourse ></sortcourse>
 </scroll-view>

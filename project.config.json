@@ -4,10 +4,10 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
-		"enhance": false,
-		"postcss": false,
+		"enhance": true,
+		"postcss": true,
 		"preloadBackgroundData": false,
-		"minified": false,
+		"minified": true,
 		"newFeature": true,
 		"coverView": true,
 		"autoAudits": false,
@@ -20,7 +20,8 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"nodeModules": true
 	},
 	"appid": "wx98745112c0e03b72",
 	"projectname": "studyonline",

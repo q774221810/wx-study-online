@@ -1,0 +1,2 @@
+<!--miniprogram/page/index/pages/search/search.wxml-->
+<mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>

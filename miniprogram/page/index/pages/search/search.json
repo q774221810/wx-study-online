@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "mp-searchbar": "/miniprogram_npm/weui-miniprogram/searchbar/searchbar"
+  },
+  "navigationStyle":"default",
+  "navigationBarBackgroundColor": "#6b74f7"
+
+   
+  
+}

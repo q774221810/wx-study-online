@@ -3,7 +3,9 @@
   <icon   size="{{searchHeight}}" class="searchicon" color="rgb(255,255,255)" type='search' 
    >
   <input class='search' type='text' value='' placeholder="搜索" placeholder-class="placeholderStyle" maxlength="20"
-  style="height:{{searchHeight}}px; font-size:{{searchHeight-15}}px;">
+  style="height:{{searchHeight}}px; font-size:{{searchHeight-15}}px;"
+  bindconfirm="search"
+  >
    </input>
   </icon>
 </view>

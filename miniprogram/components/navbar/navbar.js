@@ -29,7 +29,11 @@ Component({
   methods: {
     cl:function(){
        console.log(this.data.navHeight)
-    }
-   
+    },
+   search:function(){
+     wx.navigateTo({
+       url: '/page/index/pages/search/search',
+     })
+   }
   }
 })

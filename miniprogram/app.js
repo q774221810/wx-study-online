@@ -13,6 +13,7 @@ App({
         this.globalData.navHeight = navHeight;
         this.globalData.navTop = navTop;
         this.globalData.searchHeight = menuButtonObject.height;
+        this.globalData.windowHeight=res.windowHeight;
       },
       fail(err) {
         console.log(err);
