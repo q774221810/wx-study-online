@@ -1,9 +1,7 @@
 <!--components/sorticon/sorticon.wxml-->
-<view class="sortbackground">
-<view class="sorticon" wx:for="{{iconList}}" wx:key="index" >
-<view class="iconsize {{item.class}}"></view>
-<view style="margin-top:5rpx">{{item.sortname}}</view>
+<view class="sortbackground" >
+	<view class="sorticon" wx:for="{{iconList}}" wx:key="index" bindtap="iconclick" id="{{index+1}}">
+			<view class="iconsize {{item.class}}" id="{{index+1}}"></view>
+			<view style="margin-top:5rpx" id="{{index+1}}">{{item.sortname}}</view>
+	</view>
 </view>
-</view>
-
-

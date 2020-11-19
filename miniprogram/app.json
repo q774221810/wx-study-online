@@ -35,16 +35,21 @@
     {
       "root": "page/index/",
       "pages": [
-        "pages/search/search"
+        "pages/search/search",
+        "pages/course/course"
       ]
     },
     {
       "root": "page/mycourse/",
-      "pages": []
+      "pages": [
+        "pages/studyRank/studyRank"
+      ]
     },
     {
       "root": "page/accout/",
-      "pages": []
+      "pages": [
+        "pages/mycomment/mycomment"
+      ]
     }
   ],
   "window": {

@@ -1,0 +1,12 @@
+var timeFormat = function (time) {
+  var timeFormat = 0
+  if (time >= 3600) {
+    timeFormat = (time / 3600).toFixed(1)
+  } else if (time >= 60) {
+    timeFormat = Math.floor(time / 60)
+  }
+  return timeFormat
+}
+module.exports = {
+  timeFormat: timeFormat
+};

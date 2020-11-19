@@ -1,13 +1,17 @@
 <!--miniprogram/pages/account/account.wxml-->
-<view style="background-color:white;height:{{windowHeight}}px">
+<view style="background-color:white;height:{{tabscroolHeight+navHeight}}px">
 	<view class="persondetail" style="padding-top:{{navHeight + 10}}px ">
-		<image class="wxhead" src="../../uiimg/head.jpg"></image>
-		<view class="wxname">🐷啊</view>
+		<button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" hover-class="none">
+			<image class="wxhead" src="{{userhead}}"></image>
+			<view class="wxname">{{username}}</view>
+		</button>
 	</view>
 	<view style="padding-top:100rpx;">
-		<view class="item">
-			<view class="itemicon person"> </view><text>个人信息</text> <text class="righticon">＞</text>
-		</view>
+		<navigator url="/page/accout/pages/mycomment/mycomment">
+			<view class="item">
+				<view class="itemicon personcomment"> </view><text>我的评论</text> <text class="righticon">＞</text>
+			</view>
+		</navigator>
 		<view class="item">
 			<view class="itemicon share"> </view><text>分享小程序</text> <text class="righticon">＞</text>
 		</view>

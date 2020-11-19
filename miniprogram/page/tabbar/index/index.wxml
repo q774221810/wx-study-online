@@ -1,18 +1,18 @@
 <!--index.wxml-->
 <!-- <navbar  navHeight = "{{navHeight}}" navTop = "{{navTop}}"></navbar> -->
-<navbar  ></navbar>
+<navbar></navbar>
 <view>
-<scroll-view scroll-y="true" style="height:1110rpx;width:100%" >
-<homeswiper class="homeswiper"></homeswiper>
-<sorticon></sorticon>
-<view>
-<newestCourse></newestCourse>
+	<scroll-view scroll-y="true" style="height:{{tabscrollHeight}}px;" scroll-top="{{toTop}}" id="container" bindscroll="" bindscrolltolower="{{isButtom?'':'loadmore'}}">
+		<view id="threeH">
+			<homeswiper class="homeswiper"></homeswiper>
+			<sorticon bind:iconclick="iconclick"></sorticon>
+			<newestCourse newestCourse="{{newestCourse}}"></newestCourse>
+		</view>
+		<view>
+			<sortcourse minheight="{{tabscrollHeight}}" course="{{course}}" bind:scrollToSort="scrollToSort" 
+			bind:getSortCourse="getSortCourse" 
+			bind:getChooseCourse="getChooseCourse" id="sortCourse"></sortcourse>
+		</view>
+
+	</scroll-view>
 </view>
-<sortcourse ></sortcourse>
-</scroll-view>
-</view>
-
-
-
-
-

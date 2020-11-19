@@ -1,6 +1,7 @@
 <!--components/sortcourse/sortcourse.wxml-->
-<view style="position: relative;">
-	<view class="btnview">
+
+<view style="height:{{minheight}}px">
+	<!-- <view class="btnview">
 		<view class="btn">{{courselist.now}}<text style="font-size:24rpx">▼</text></view>
 		<view class="btn" bindtap="choose">{{chooselist.now}}<text style="font-size:24rpx">▼</text></view>
 	</view>
@@ -14,33 +15,42 @@
 		<block wx:for="{{chooselist.name}}">
 			<view class="sortcoursename">{{item}}</view>
 		</block>
-	</view>
+	</view> -->
+	<van-sticky>
+		<van-dropdown-menu>
+			<van-dropdown-item id="item1" title="{{ sortTitle }}" bind:open="openMenu">
+				<view class="sortcourse">
+					<block wx:for="{{courselist.name}}" wx:key="index">
+						<view class="{{courselist.now==index?'clickactive':''}} sortcoursename" id="{{index}}" bindtap="sortChange">{{item}}</view>
+					</block>
+				</view>
+			</van-dropdown-item>
+			<van-dropdown-item id="item2" title="{{ chooseTitle }}" bind:open="openMenu">
+				<view class="sortcourse">
+					<view class="sortcoursename" style="margin-right:100rpx">筛选</view>
+					<block wx:for="{{chooselist.name}}" wx:key="index">
+						<view class="sortcoursename {{chooselist.now==index?'clickactive':''}} " id="{{index}}" bindtap="chooseChange">{{item}}</view>
+					</block>
+				</view>
+			</van-dropdown-item>
+		</van-dropdown-menu>
+	</van-sticky>
 	<view class="courseview">
-		<view style="margin-top:40rpx">
-			<view class="course">
-				<image src="../../page/swiperimg/electric.jpg" class="sortimg"></image>
-				<view class="coursedetail">
-					<view class="coursename">大学物理</view>
-					<view class="school">陈晨</view>
-					<view class="number"><text style="margin-left:50rpx;">41396</text>
-						<view class="time">48学时</view>
+		<view wx:for="{{course}}" wx:key="index" wx:for-item="course">
+			<navigator url="{{'/page/index/pages/course/course?cno='+course._cno}}" hover-class="none"> 
+				<view class="course">
+					<image src="{{'https://7975-yun-in796-1300055920.tcb.qcloud.la/courseimg/'+course._cno+'.jpg'}}" class="sortimg"></image>
+					<view class="coursedetail">
+						<view class="coursename">{{course.cname}}</view>
+						<view class="school">{{course.school}}</view>
+						<view class="number"><text style="margin-left:50rpx;">{{course.people}}</text>
+							<view class="time">{{course.ctime}}学时</view>
+						</view>
 					</view>
 				</view>
-			</view>
-			<view class="line"></view>
+			</navigator>
+			<van-divider />
 		</view>
-		<view style="margin-top:40rpx">
-			<view class="course">
-				<image src="../../page/swiperimg/electric.jpg" class="sortimg"></image>
-				<view class="coursedetail">
-					<view class="coursename">大学物理大学物理大学物理大学物理大学物理</view>
-					<view class="school">陈晨</view>
-					<view class="number"><text style="margin-left:50rpx;">4396</text>
-						<view class="time">48学时</view>
-					</view>
-				</view>
-			</view>
-			<view class="line"></view>
-		</view>
+
 	</view>
 </view>

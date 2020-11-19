@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "mp-searchbar": "/miniprogram_npm/weui-miniprogram/searchbar/searchbar"
+    "van-search": "@vant/weapp/search/index",
+    "van-divider": "@vant/weapp/divider/index"
   },
   "navigationStyle":"default",
   "navigationBarBackgroundColor": "#6b74f7"

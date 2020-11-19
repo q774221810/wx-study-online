@@ -1,9 +1,11 @@
 // miniprogram/pages/mycourse/mycourse.js
 import * as echarts from '../../../components/ec-canvas/echarts';
 const app = getApp();
+var chart = null
+var outThat
 
 function initChart(canvas, width, height, dpr) {
-  const chart = echarts.init(canvas, null, {
+  chart = echarts.init(canvas, null, {
     width: width,
     height: height,
     devicePixelRatio: dpr // new
@@ -29,7 +31,7 @@ function initChart(canvas, width, height, dpr) {
       type: 'category',
       boundaryGap: false,
       offset: 10,
-      data: ['4.18', '4.19', '4.20', '4.21', '4.22', '4.23', '今天'],
+      data: getSevenDay(),
       axisLabel: {
         show: true,
         textStyle: {
@@ -65,7 +67,7 @@ function initChart(canvas, width, height, dpr) {
       name: 'A',
       type: 'line',
       // smooth: true,
-      data: [0, 36, 65, 30, 78, 40, 33],
+      data: [0, 0, 0, 0, 0, 0, 0],
       itemStyle: {
         normal: {
           label: {
@@ -80,18 +82,128 @@ function initChart(canvas, width, height, dpr) {
       }
     }]
   };
-
   chart.setOption(option);
+  outThat.setData({
+    chartLoaded: true
+  })
   return chart;
+}
+
+function getmycourse(that) {
+  if (app.globalData.updateMyCourse) {
+    wx.cloud.callFunction({
+      name: 'getmycourse',
+      data: {},
+      success: res => {
+        console.log(res)
+        that.setData({
+          myCourseList: res.result.course.list
+        })
+        app.globalData.updateMyCourse = false
+      },
+      fail: err => {
+        console.error('[云函数] [getmycourse] 调用失败', err)
+      }
+    })
+  }
+}
+
+function getDay() {
+  var timestamp = Date.parse(new Date())
+  var date = new Date(timestamp)
+  // var Y =date.getFullYear();
+  // //获取月份  
+  // var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+  // //获取当日日期 
+  var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+  return D
+}
+
+function getSevenDay() {
+  var day1 = new Date();
+  var SevenDay = []
+  for (var i = 0; i < 6; i++) {
+    day1.setTime(day1.getTime() - 24 * 60 * 60 * 1000)
+    var s1 = (day1.getMonth() + 1) + "." + day1.getDate()
+    SevenDay[5 - i] = s1
+  }
+  SevenDay[6] = '今天'
+  return SevenDay
+}
+
+function getMyStudyTime(that) {
+  var day = getDay()
+  if (day != that.data.day || app.globalData.updateStudyTime) {
+    wx.cloud.database().collection('user').where({
+      _openid: app.globalData.openid //查询注册
+    }).field({
+      lastStudy: 1,
+      todayStudy: 1,
+      totalStudy: 1,
+      recent7DayStudy: 1
+    }).get().then(res2 => {
+      if (res2.data.length > 0) {
+        that.setData({
+          studyTimeDetail: {
+            todayStudy: res2.data[0].todayStudy,
+            lastStudy: res2.data[0].lastStudy,
+            totalStudy: res2.data[0].totalStudy,
+            recent7DayStudy: res2.data[0].recent7DayStudy,
+          }
+        })
+        if (day != that.data.day) { //换了一天
+          chart.setOption({
+            xAxis: [{
+              data: getSevenDay()
+            }]
+          })
+        }
+        if (chart != null) {
+          var recent7DayStudy = res2.data[0].recent7DayStudy.concat()
+          recent7DayStudy.forEach(function (item, index, arr) {
+            arr[index] = Math.floor(arr[index] / 60)
+          })
+          chart.setOption({
+            series: [{
+              data: recent7DayStudy
+            }]
+          })
+          app.globalData.updateStudyTime = false
+          console.log(res2)
+        }
+      }
+    })
+  }
 }
 Component({
   data: {
     ec: {
       onInit: initChart
     },
-    navHeight: app.globalData.navHeight,
-    navTop: app.globalData.navTop,
-    searchHeight: app.globalData.searchHeight,
+    day: '',
+    isLogin: false,
+    unLogin: false,
+    tabscrollHeight: app.globalData.tabscrollHeight,
+    chartLoaded: false
+  },
+  observers: {
+    'chartLoaded': function () {
+      console.log('chartLoaded')
+      getMyStudyTime(this)
+    },
+    'studyTimeDetail': function () {
+      this.getTodayRank()
+    }
+  },
+  lifetimes: {
+    ready: function () {
+      outThat = this
+    },
+    attached: function () {
+      this.setData({
+        day: getDay(),
+      })
+    }
   },
   pageLifetimes: {
     show() {
@@ -101,6 +213,96 @@ Component({
           selected: 1
         })
       }
+      if (app.globalData.openid && !this.data.isLogin) {
+        this.setData({
+          isLogin: true,
+          unLogin: false
+        })
+      } else if (!app.globalData.openid) {
+        this.setData({
+          unLogin: true
+        })
+      }
+      if (app.globalData.openid) {
+        getmycourse(this)
+      }
+      if (this.data.chartLoaded) {
+        getMyStudyTime(this)
+      }
+      this.data.studyTimeDetail && this.getTodayRank()
+    }
+  },
+  methods: {
+    navToAccount: function () {
+      wx.switchTab({
+        url: '/page/tabbar/account/index'
+      })
+    },
+    exitCourse(e) {
+      var that = this
+      wx.showModal({
+        title: '退出课程',
+        content: '确定退出' + e.target.dataset.cname + '吗？',
+        success(res) {
+          if (res.cancel) {
+
+          } else {
+            var db = wx.cloud.database()
+            var _ = db.command
+            db.collection('user').where({
+                _openid: app.globalData.openid
+              })
+              .update({
+                data: {
+                  course: _.pull({
+                    _cno: _.eq(e.target.dataset.cno)
+                  })
+                }
+              }).then(res => {
+                console.log(res)
+                wx.showToast({
+                  title: '退出成功',
+                  duration: 2000
+                })
+                for (var i = 0; i < app.globalData.user[0].course.length; i++) {
+                  if (app.globalData.user[0].course[i]._cno == e.target.dataset.cno) {
+                    app.globalData.user[0].course.splice(i, i)
+                    break
+                  }
+                }
+                app.globalData.updateMyCourse = true
+                getmycourse(that)
+              })
+          }
+        }
+      })
+      console.log(e)
+    },
+    getTodayRank() {
+      if (!this.data.studyTimeDetail.todayStudy > 0) {
+        this.setData({
+          rankText: '今天还没学习呢~'
+        })
+      } else {
+        wx.cloud.callFunction({
+          name: 'getMyrank',
+          data: {
+            todayStudy: {
+              time: this.data.studyTimeDetail.todayStudy
+            }
+          },
+          success: res => {
+            console.log(res)
+            this.setData({
+              rankText: '今天排名' +( parseInt(res.result) +1)
+            })
+          },
+          fail: err => {
+            console.error('[云函数] [getmycourse] 调用失败', err)
+          }
+        })
+      }
+
     }
   }
 })

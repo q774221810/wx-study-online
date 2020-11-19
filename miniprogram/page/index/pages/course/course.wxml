@@ -1,0 +1,139 @@
+<!--miniprogram/page/index/pages/course/course.wxml-->
+<view style="width: 750rpx;height: 441rpx;">
+	<image hidden="{{play}}" class="img" src="{{cno?'https://7975-yun-in796-1300055920.tcb.qcloud.la/courseimg/'+cno+'.jpg':''}}"></image>
+	<video hidden="{{!play}}" autoplay="{{play}}" enable-play-gesture="true" class="img" src="{{videosrc}}" id="myvideo"
+					 objectFit="fill" controls="true" title="{{videotitle}}"  auto-pause-if-open-native="true" auto-pause-if-navigate	="true"
+					 show-center-play-btn="true"
+					 bindplay="videoplay" bindpause="videopause" binderror="videoerror"
+					 ></video>
+</view>
+
+<van-sticky>
+	<view class="swiper-tab">
+		<view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">课程介绍</view>
+		<view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">课程目录</view>
+		<view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab" wx:if="{{show}}">公告</view>
+		<view class="swiper-tab-item {{currentTab==(show?3:2)?'active':''}}" data-current="{{show?3:2}}" bindtap="clickTab">评价</view>
+	</view>
+</van-sticky>
+<swiper current="{{currentTab}}" duration="300" bindchange="swiperTab" style="height:{{(currentTab==0?T0:(currentTab==1?T1:(show?(currentTab==2?T2:T3):T3) ))+buttomview+20}}px">
+	<swiper-item>
+		<view id="T0">
+			<view class="back">
+				<view class="title">{{cname}}</view>
+				<view class="title3 grey">{{school}}</view>
+				<view class="rate">
+					<van-rate readonly value="{{ rate }}" void-color="#eee" void-icon="star" allow-half size="40rpx" custom-class="star" />
+					<view style=" position: absolute;left: 220rpx;top:3px">
+						<text class="ratetext">{{rate}}分</text>
+						<text class="ratetext">{{people}}人参加了学习</text>
+					</view>
+				</view>
+			</view>
+			<view class="cintrodue back">
+				<view class="title2">课程简介</view>
+				<text  class="cdetail" space="ensp" maxlength = ' -1 ' >
+				{{text}}
+			</text>
+			</view>
+		</view>
+	</swiper-item>
+	<swiper-item>
+		<view id="T1">
+			<block wx:for="{{courselist}}" wx:for-item="courselist" wx:key="index">
+				<van-cell title="{{index+1+courselist.title}}" is-link arrow-direction="{{courselist.listshow=='block'?'up':'down'}}" custom-class="cellgroup" title-class="celltitle" center="true" bindtap="showlist" id="{{index}}" />
+				<view style="display:{{courselist.listshow=='block'?'block':'none'}}">
+					<block wx:for="{{courselist.part}}" wx:for-item="part" wx:for-index="j" wx:key="index">
+						<van-cell title="{{index+1+'.'+(j+1)+part}}" icon="video-o" custom-class="cell" title-class="celltitle" center="true" id="{{index+1+'_'+(j+1)}}" bind:click="playcourse" data-title="{{index+1+'.'+(j+1)+part}}"/>
+					</block>
+				</view>
+			</block>
+		</view>
+	</swiper-item>
+	<swiper-item wx:if="{{show}}">
+		<view>公告</view>
+	</swiper-item>
+	<swiper-item>
+		<view id="T3">
+			<view class="back">
+				<view wx:if="{{hasjoin}}">
+					<view wx:if="{{uservalue?false:true}}">
+						<view class="title2">评价该课程</view>
+						<view style="text-align:center">
+							<van-rate value="{{ uservalue }}" bindtap="evalute" readonly void-color="#eee" void-icon="star" allow-half size="60rpx" custom-class="userstar" />
+							<view class="celltitle grey">你的宝贵评价对我们非常重要哦~</view>
+						</view>
+					</view>
+					<view wx:else class="title3">
+						<view class="flexSpaceBet">
+							<text >我的评价</text>
+							<view style="margin:4rpx 290rpx 0 0">
+								<van-rate readonly value="{{ uservalue }}" void-color="#eee" void-icon="star" size="30rpx" custom-class="star" />
+							</view>
+							<text class="{{commitcomment==''?'blue':'grey'}}" bindtap="{{commitcomment?'':'evalute'}}">{{commitcomment==''?'编辑':'已提交'}}</text>
+						</view>
+						<view class="grey break">
+							{{commitcomment}}
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="back">
+				<view class="title2">全部评价</view>
+				<view class="flexSpaceBet" style="align-items: center;">
+					<view style="font-size:100rpx;text-align:center;" class="deepgrey">{{rate}}</view>
+					<view>
+						<view class="flexSpaceBet" style="align-items:center" wx:for="{{rateDistribute}}" wx:key="index" wx:for-item="star">
+							<view class="stargroup">
+								<van-rate readonly value="{{ 5-index }}" count="{{ 5-index }}" color="#727272" void-icon="star" size="20rpx" />
+							</view>
+							<view class="starprogress">
+								<progress percent="{{star/people*100}}" color="#727272" stroke-width="8rpx" />
+							</view>
+						</view>
+					</view>
+				</view>
+				<block wx:for="{{commentlist}}" wx:key="index" wx:for-item="commentlist">
+					<view style="margin-top:30rpx">
+						<view class="flexSpaceBet">
+							<view class="flexSpaceBet">
+								<van-image round width="80rpx" height="80rpx" src="{{commentlist.headImg}}" />
+								<view class="flexrow" style="margin-left:20rpx">
+									<view class="title3">{{commentlist.name}}</view>
+									<view class="title4 grey">学习了{{commentlist.hasStudy}}个学时评论</view>
+								</view>
+							</view>
+							<view class="flexrow" style="align-items: flex-end;">
+								<van-rate readonly value="{{commentlist.rate}}" void-color="#eee" void-icon="star" size="30rpx" custom-class="star" />
+								<view class="title4 grey">{{commentlist.date}}</view>
+							</view>
+						</view>
+						<view class="title3" style="margin-left:100rpx">{{commentlist.comment}}</view>
+					</view>
+				</block>
+			</view>
+		</view>
+	</swiper-item>
+</swiper>
+<view class="buttomview" id="buttomview" wx:if="{{!hasjoin}}" bindtap="joinCourse">
+	<view class="buttom title3">
+		<view class="wantStudy">
+			<van-icon name="like-o" size="30rpx" /><text style="margin-left:10rpx">想学</text></view>
+		<view><button style=" height: 70rpx;width: 500rpx;" class="btn">+加入学习</button></view>
+	</view>
+</view>
+<van-dialog use-slot show="{{ rateDialog }}" width="650rpx" show-cancel-button bind:cancel="onCancel" bind:close="onClose" bind:confirm="confirmRate">
+	<view style="text-align:center">
+		<van-rate value="{{ preuservalue }}" bind:change="onChange" void-color="#eee" void-icon="star" size="60rpx" custom-class="userstar" />
+		<view class="title3 grey">
+			<view hidden="{{!(preuservalue==5)}}">推荐，课程非常棒</view>
+			<view hidden="{{!(preuservalue==4)}}">良好，课程还可以</view>
+			<view hidden="{{!(preuservalue==3)}}">中评，课程很一般</view>
+			<view hidden="{{!(preuservalue==2)}}">差，我对课程不满意</view>
+			<view hidden="{{!(preuservalue==1)}}">极差，课程很糟糕，我要吐槽</view>
+		</view>
+		<view style="background-color:#f6f6f6;">
+			<textarea class="title3 grey" style="margin:20rpx;width:610rpx;text-align:left" model:value="{{usercomment}}" placeholder="请可能详尽描述你的学习经历，例如学习成果，课程内容，讲师风格等(200字以内)" placeholder-class="grey title3" maxlength='200'></textarea>
+		</view>
+	</view>
+</van-dialog>

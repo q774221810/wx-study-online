@@ -4,7 +4,7 @@
    >
   <input class='search' type='text' value='' placeholder="搜索" placeholder-class="placeholderStyle" maxlength="20"
   style="height:{{searchHeight}}px; font-size:{{searchHeight-15}}px;"
-  bindconfirm="search"
+  bindconfirm="search" model:value="{{keyWord}}"
   >
    </input>
   </icon>

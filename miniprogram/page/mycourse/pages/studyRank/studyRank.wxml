@@ -1,0 +1,66 @@
+<!--miniprogram/page/mycourse/pages/studyRank/studyRank.wxml-->
+<wxs src="../../../../filter/timeFormat.wxs" module="timeFormat" />
+
+<view class="top3">
+  <view wx:for="{{nowArr}}" wx:for-index="idx" wx:for-item="itemName">
+    <block wx:if="{{idx<3}}">
+      <image src="{{itemName.headImg}}" />
+      <text>{{idx+1+'.'}}{{itemName.name}}</text>
+    </block>
+  </view>
+  <!-- <view>
+    <image src="/page//uiimg//head.jpg" />
+    <text>2</text>
+  </view>
+  <view>
+    <image src="/page/uiimg/person.png" />
+    <text>3</text>
+  </view> -->
+</view>
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title="今日学习排名"></van-tab>
+  <van-tab title="持续学习排名"></van-tab>
+  <van-tab title="总学习排名"></van-tab>
+</van-tabs>
+<view class="restRank">
+  <block wx:for="{{nowArr}}" wx:for-index="idx" wx:for-item="itemName">
+    <van-cell>
+      <solt>
+        <text>{{active!=1? 
+      ( active==0?timeFormat.timeFormat(itemName.todayStudy):
+(timeFormat.timeFormat(itemName.totalStudy)))
+:itemName.lastStudy}}{{active!=1?(active==0?(itemName.todayStudy>3600?'小时':'分钟'):(itemName.totalStudy>3600?'小时':'分钟')):'天'}}
+        </text>
+      </solt>
+      <view slot="title">
+        <view class="rankContainer">
+          <text>{{idx+1+'.'}}</text>
+          <image src="{{itemName.headImg}}"></image>
+          <text class="van-cell-text">{{itemName.name}}</text>
+        </view>
+
+      </view>
+    </van-cell>
+  </block>
+</view>
+<block wx:if="{{myRank.headImg}}">
+<view class="my-rank">
+  <van-cell>
+    <solt>
+      <text>{{active!=1? 
+      ( active==0?timeFormat.timeFormat(myRank.todayStudy):
+(timeFormat.timeFormat(myRank.totalStudy)))
+:myRank.lastStudy}}{{active!=1?(active==0?(myRank.todayStudy>3600?'小时':'分钟'):(myRank.totalStudy>3600?'小时':'分钟')):'天'}}
+      </text>
+    </solt>
+    <view slot="title">
+      <view class="rankContainer">
+        <text>{{myRank.index+'.'}}</text>
+        <image src="{{myRank.headImg}}"></image>
+        <text class="van-cell-text">{{myRank.name}}</text>
+      </view>
+
+    </view>
+  </van-cell>
+</view>
+</block>

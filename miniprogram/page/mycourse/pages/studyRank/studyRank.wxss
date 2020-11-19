@@ -1,0 +1,64 @@
+/* miniprogram/page/mycourse/pages/studyRank/studyRank.wxss */
+.top3 {
+  position: relative;
+  height: 35vw;
+  background-color: white;
+  padding-top: 20px;
+}
+
+.top3 image {
+   border-radius: 50%;
+}
+.top3 view {
+  position: absolute;
+  bottom: 0;
+}
+.top3 text{
+  display: block;
+  text-align: center;
+}
+.top3 view:nth-child(1) {
+
+  left: 50%;
+  transform: translateX(-50%);
+}
+.top3 view:nth-child(1) image {
+  width: 30vw;
+  height: 30vw;
+}
+
+.top3 view:nth-child(2) {
+  
+  left: 10%;
+  
+}
+.top3 view:nth-child(2) image{
+  width: 20vw;
+  height: 20vw;
+}
+.top3 view:nth-child(3) {
+  left: 70%;
+}
+.top3 view:nth-child(3) image{
+   width: 15vw;
+  height: 15vw;
+}
+.rankContainer image{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin:0 5px;
+}
+.restRank{
+  margin-bottom: 44px;
+}
+.rankContainer{
+  display: flex;
+  align-content: center;
+}
+.my-rank{
+  border-top: 1px solid black;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}

@@ -1,0 +1,32 @@
+<view class="back1">
+	<view class="title2">全部评价</view>
+	<van-divider />
+	<block wx:for="{{mycomment.commentlist}}" wx:key="index" wx:for-item="mycommentlist">
+		<view style="margin-top:30rpx">
+			<view class="flexSpaceBet">
+				<view class="flexSpaceBet">
+					<van-image round width="80rpx" height="80rpx" src="{{mycomment.headimg}}" />
+					<view class="flexrow" style="margin-left:20rpx">
+						<view class="title3">{{mycomment.name}}</view>
+						<view class="title4 grey">学习了{{mycommentlist.studytime}}个学时评论</view>
+					</view>
+				</view>
+				<view class="flexrow" style="align-items: flex-end;">
+					<van-rate readonly value="{{mycommentlist.rate}}" void-color="#eee" void-icon="star" size="30rpx" custom-class="star" />
+					<view class="title4 grey">{{mycommentlist.date}}</view>
+				</view>
+			</view>
+			<view>
+				<view class="course back2">
+					<view class="coursedetail">
+						<view class="coursename">{{mycommentlist.coursename}}</view>
+						<view class="school">{{mycommentlist.school}}</view>
+					</view>
+					<image src="{{mycommentlist.imgurl}}" class="courseimage"></image>
+				</view>
+			</view>
+			<view class="title2" style="">{{mycommentlist.comment}}</view>
+		</view>
+		<van-divider />
+	</block>
+</view>

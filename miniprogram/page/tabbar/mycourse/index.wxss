@@ -11,81 +11,131 @@
   width: 730rpx;
   height: 365rpx;
 }
+
 .ecan {
   width: 100%;
   height: 100%;
 }
-.studydetail{
-  display: flex;
-  margin: 0 75rpx 0 75rpx;
+
+.studydetail {
   background-color: white;
-  justify-content: center; 
   border-radius: 10rpx;
-  box-shadow:1px 1px 1px 1px rgb(172, 172, 172);
+  margin: 0 75rpx 0 75rpx;
+  box-shadow: 1px 1px 1px 1px rgb(172, 172, 172);
   /* border:#aeaeae 1px solid ; */
   position: absolute;
   top: 0;
 }
-.ditem{
-  width: 200rpx;
-  height:200rpx ;
-  text-align: center;
-  font-size:30rpx ;
- 
+
+.itemView {
+  display: flex;
+  
+  justify-content: center;
+  border-radius: 10rpx;
 }
-.item{
+
+.ditem {
+  width: 200rpx;
+  height: 200rpx;
+  text-align: center;
+  font-size: 30rpx;
+
+}
+
+.dbottom {
+  text-align: center;
+}
+.dbottom navigator{
+  position: absolute;
+  right: 2px;
+  bottom: 1px;
+  font-size: 12px;
+  color: #bfbfbf;
+}
+
+.item {
   margin-top: 30rpx;
 }
-.value{
+
+.value {
   margin-top: 15rpx;
   color: #aeaeae;
 }
-.value text{
+
+.value text {
   font-size: 60rpx;
   color: black;
 }
-.line{
+
+.line {
   background-color: rgb(167, 167, 167);
   width: 2rpx;
-  margin:40rpx 0 40rpx 0;
+  margin: 40rpx 0 40rpx 0;
   height: 120rpx;
 }
-.signdetail{
-  padding-top: 100rpx;
+
+.signdetail {
+  padding-top: 150rpx;
 }
-.signbar{
+
+.signbar {
   padding-top: 120rpx;
   display: flex;
   justify-content: space-between;
-  margin: 0 20rpx 0 20rpx ;
+  margin: 0 20rpx 0 20rpx;
 }
-.signtitle{
+
+.signtitle {
   font-size: 50rpx;
   font-weight: bold;
 }
-.more{
+
+.more {
   background-image: url("data:image/svg+xml,%3Csvg t='1587792290167' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='16701' width='200' height='200'%3E%3Cpath d='M127.798537 554.046075l85.334442 0 0-85.343652-85.334442 0L127.798537 554.046075zM127.798537 724.76817l85.334442 0 0-85.334442-85.334442 0L127.798537 724.76817zM127.798537 383.367981l85.334442 0 0-85.334442-85.334442 0L127.798537 383.367981zM298.521656 554.046075l597.45775 0 0-85.343652-597.45775 0L298.521656 554.046075zM298.521656 724.76817l597.45775 0 0-85.334442-597.45775 0L298.521656 724.76817zM298.521656 383.367981l597.45775 0 0-85.334442-597.45775 0L298.521656 383.367981z' p-id='16702' fill='%236b74f7'%3E%3C/path%3E%3C/svg%3E");
   background-size: cover;
   height: 70rpx;
   width: 70rpx;
+  position: relative;
 }
-.mycourse{
+
+.moredetail {
+  position: absolute;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 25rpx solid transparent;
+  border-right: 25rpx solid transparent;
+  border-bottom: 50rpx solid white;
+}
+
+.sort {
+  font-size: 30rpx;
+  width: 250rpx;
+  left: -150rpx;
+}
+
+.mycourse {
   margin: 20rpx;
   display: flex;
   flex-direction: column;
 }
-.mycoursetitle{
+
+.mycoursetitle {
   font-size: 38rpx;
   border-left: 5px #6b74f7 solid;
   padding-left: 5px;
   font-weight: bold;
 }
-.course{
+
+.course {
   display: flex;
   height: 200rpx;
   align-items: center;
 }
-.coursedetail{
+
+.coursedetail {
   display: flex;
   flex-direction: column;
   width: 440rpx;
@@ -93,32 +143,63 @@
   height: 150rpx;
   position: relative;
 }
-.coursename{
+
+.coursename {
   width: 100%;
   font-size: 40rpx;
-  overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.school{
-  font-size:30rpx;
-  color:#666;
+
+.school {
+  font-size: 30rpx;
+  color: #666;
 }
-.courseprogress{
+
+.courseprogress {
   position: absolute;
   bottom: 0;
   font-size: 28rpx;
   color: #aeaeae;
   width: 100%;
 }
-.progressnumber{
+
+.progressnumber {
   position: absolute;
   right: 0;
   bottom: 8px;
 }
 
-.courseimage{
-  border-radius: 15rpx ;
+.courseimage {
+  border-radius: 15rpx;
   height: 147rpx;
   width: 250rpx;
+}
+
+.unlogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.unloginback {
+  height: 350rpx;
+  width: 350rpx;
+  background-image: url("data:image/svg+xml,%3Csvg t='1591771220634' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='5744' width='200' height='200'%3E%3Cpath d='M283.91714816 943.2627803a120.32534073 120.32534073 0 0 1-120.32534073-120.09260373L162.19538205 208.74290176a120.32534073 120.32534073 0 0 1 120.09260259-120.32534073H739.38463858A120.32534073 120.32534073 0 0 1 860.40819257 208.74290176v614.19453667a120.32534073 120.32534073 0 0 1-120.09260374 120.09260374H283.21893603zM741.0138021 906.95571342z m0-749.4150838H283.91714816A50.50406002 50.50406002 0 0 0 232.01666275 208.74290176v613.96179968a50.27132189 50.27132189 0 0 0 50.27132189 50.27132189H739.38463858a50.27132189 50.27132189 0 0 0 51.20227328-50.50406002V208.74290176a50.73679815 50.73679815 0 0 0-50.50406002-50.50406002z' fill='%23474747' p-id='5745'%3E%3C/path%3E%3Cpath d='M382.13241742 263.20350208a34.67790336 34.67790336 0 0 1-31.18683932-19.31722183l-56.3224997-112.17952427a34.91064035 34.91064035 0 0 1 62.60641565-31.18683932l46.54751971 93.09504171h219.93703651l46.54751972-93.09504171a34.91064035 34.91064035 0 1 1 62.14094052 30.72136305l-55.85702457 112.41226354a35.60885362 35.60885362 0 0 1-31.18683933 19.3172207zM328.83550549 472.43460722a34.91064035 34.91064035 0 1 1 0-69.82128071h287.66367858a34.91064035 34.91064035 0 1 1 0 69.82128071zM329.06824363 629.29975182a34.91064035 34.91064035 0 0 1 0-69.82128071h339.79690098a34.91064035 34.91064035 0 0 1 34.91064035 34.67790336 35.14337849 35.14337849 0 0 1-34.67790222 35.14337735z' fill='%2312DBDB' p-id='5746'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+.unlogintext {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: #a5a5a5;
+  font-size: 30rpx;
+}
+
+.unloginbtn {
+  font-size: 35rpx !important;
+  height: 100rpx !important;
+  width: 368rpx !important;
 }

@@ -1,7 +1,7 @@
 /* components/sorticon/sorticon.wxss */
 .sortbackground{
   background-color: white;
-  margin: 40rpx 10rpx 10rpx 10rpx;
+  margin: 40rpx 10rpx 20rpx 10rpx;
   width: 730rpx;
   border-radius: 20rpx;
   color: rgb(79, 79, 79);

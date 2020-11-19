@@ -42,6 +42,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+      iconclick:function(e) {
+       var id=e.target.id
+        this.triggerEvent('iconclick',id)
+      }
   }
 })

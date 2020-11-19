@@ -1,63 +1,90 @@
 <!--miniprogram/pages/mycourse/mycourse.wxml-->
-
-<view class="title" style="height:{{navHeight-navTop}}px;padding-top:{{navTop+5}}px;font-size:{{searchHeight-12}}px;">
+<wxs src="../../../filter/getURL.wxs" module="tool" />
+<wxs src="../../../filter/timeFormat.wxs" module="timeFormat" />
+<!-- <view class="title" style="height:{{navHeight-navTop}}px;padding-top:{{navTop+5}}px;font-size:{{searchHeight-12}}px;">
 	学习概况
-</view>
-<view>
-	<scroll-view scroll-y="true" style="height:1110rpx;width:100%">
-		<view class="container" >
-			<ec-canvas id="mychart-dom-line" canvas-id="mychart-line"  class="ecan" ec="{{ ec }}"  ></ec-canvas>
-		</view>
-		<view style="position:relative;">
+</view> -->
+<view style="margin-bottom:48px;height:100%" wx:if="{{isLogin}}">
+	<view class="container">
+		<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" class="ecan" ec="{{ ec }}"></ec-canvas>
+	</view>
+	<view style="position:relative;">
+		<van-sticky>
 			<view class="studydetail">
-				<view class="ditem">
-					<view class="item">今日学习</view>
-					<view class="value"><text>60</text>分钟</view>
+				<view class="itemView">
+					<view class="ditem">
+						<view class="item">今日学习</view>
+						<view class="value">
+							<text>{{timeFormat.timeFormat(studyTimeDetail.todayStudy)}}</text>{{studyTimeDetail.todayStudy>3600?'小时':'分钟'}}
+						</view>
+					</view>
+					<view class="line"></view>
+					<view class="ditem">
+						<view class="item">连续学习</view>
+						<view class="value"><text>{{studyTimeDetail.lastStudy}}</text>天</view>
+					</view>
+					<view class="line"></view>
+					<view class="ditem">
+						<view class="item">累计学习</view>
+						<view class="value">
+							<text>{{timeFormat.timeFormat(studyTimeDetail.totalStudy)}}</text>{{studyTimeDetail.totalStudy>3600?'小时':'分钟'}}
+						</view>
+					</view>
 				</view>
-				<view class="line"></view>
-				<view class="ditem">
-					<view class="item">连续学习</view>
-					<view class="value"><text>1101</text>天</view>
-				</view>
-				<view class="line"></view>
-				<view class="ditem">
-					<view class="item">累计学习</view>
-					<view class="value"><text>24</text>小时</view>
-				</view>
+				<view class="dbottom">{{rankText}}<navigator url="/page/mycourse/pages/studyRank/studyRank">更多排名></navigator></view>
 			</view>
-			<view class="signdetail">
-				<view style=" background-color: white;">
-					<view class="signbar">
-						<view class="signtitle">报名记录</view>
-						<view class="more"></view>
-					</view>
-					<view class="mycourse">
-						<view class="mycoursetitle"> 课程</view>
-						<view class="course">
-							<view class="coursedetail">
-								<view class="coursename">大学物理大学物理大学物理大学物理大学物理大学物理大学物理</view>
-								<view class="school">东北大学</view>
-								<view class="courseprogress">
-									<view class="progressnumber">20%</view>
-									<progress percent="20" stroke-width="12rpx" />
-								</view>
+
+		</van-sticky>
+		<view class="signdetail">
+			<view style=" background-color: white;">
+				<view class="signbar">
+					<view class="signtitle">报名记录</view>
+					<view class="more">
+						<!-- <view class="moredetail">
+							<view class="triangle"></view>
+							<view class="sort">
+							<view>最近报名的优先</view>
+							<view>最近学过的优先</view>
 							</view>
-							<image src="../../swiperimg/electric.jpg" class="courseimage"></image>
-						</view>
-						<view class="course">
-							<view class="coursedetail">
-								<view class="coursename">大学物理大学物理大学物理大学物理大学物理大学物理大学物理</view>
-								<view class="school">东北大学</view>
-								<view class="courseprogress">
-									<view class="progressnumber">20%</view>
-									<progress percent="20" stroke-width="12rpx" />
-								</view>
-							</view>
-							<image src="../../swiperimg/electric.jpg" class="courseimage"></image>
-						</view>
+						</view> -->
 					</view>
+				</view>
+				<view class="mycourse">
+					<view class="mycoursetitle"> 课程</view>
+					<block wx:for="{{myCourseList}}" wx:key="index" wx:for-item="mycourse">
+						<navigator url="{{'/page/index/pages/course/course?cno='+mycourse.course._cno}}" hover-class="none">
+							<view class="course" bindlongpress='exitCourse' data-cno="{{mycourse.course._cno}}"
+								data-cname="{{mycourse.coursedetail[0].cname}}">
+								<view class="coursedetail" data-cno="{{mycourse.course._cno}}"
+									data-cname="{{mycourse.coursedetail[0].cname}}">
+									<view class="coursename" data-cno="{{mycourse.course._cno}}"
+										data-cname="{{mycourse.coursedetail[0].cname}}">{{mycourse.coursedetail[0].cname}}</view>
+									<view class="school" data-cno="{{mycourse.course._cno}}"
+										data-cname="{{mycourse.coursedetail[0].cname}}">{{mycourse.coursedetail[0].school}}</view>
+									<view class="courseprogress" data-cno="{{mycourse.course._cno}}"
+										data-cname="{{mycourse.coursedetail[0].cname}}">
+										<view class="progressnumber" data-cno="{{mycourse.course._cno}}"
+											data-cname="{{mycourse.coursedetail[0].cname}}">
+											{{tool.getPercent(mycourse.course.hasstudy.length,mycourse.coursedetail[0].ctime)}}%</view>
+										<progress data-cno="{{mycourse.course._cno}}" data-cname="{{mycourse.coursedetail[0].cname}}"
+											percent="{{tool.getPercent(mycourse.course.hasstudy.length,mycourse.coursedetail[0].ctime)}}"
+											stroke-width="12rpx" />
+									</view>
+								</view>
+								<image
+									src="{{'https://7975-yun-in796-1300055920.tcb.qcloud.la/courseimg/'+mycourse.course._cno+'.jpg'}}"
+									class="courseimage" data-cno="{{mycourse.course._cno}}"
+									data-cname="{{mycourse.coursedetail[0].cname}}"></image>
+							</view>
+						</navigator>
+					</block>
 				</view>
 			</view>
 		</view>
-	</scroll-view>
+	</view>
+</view>
+<view class="unlogin" style="height:{{ tabscrollHeight}}px" wx:if="{{unLogin}}">
+	<view class="unloginback"></view>
+	<view class="unlogintext">尚未登陆，无法查看</view>
+	<van-button round type="info" custom-class="unloginbtn" hover-class="none" bind:click="navToAccount">我要登陆</van-button>
 </view>

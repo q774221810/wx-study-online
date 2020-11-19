@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "van-rate": "@vant/weapp/rate/index",
+    "van-sticky": "@vant/weapp/sticky/index",
+    "van-cell": "@vant/weapp/cell/index",
+  "van-cell-group": "@vant/weapp/cell-group/index",
+  "van-dialog": "@vant/weapp/dialog/index",
+  "van-progress": "@vant/weapp/progress/index",
+  "van-image": "@vant/weapp/image/index",
+  "van-icon": "@vant/weapp/icon/index"
+  },
+  "navigationStyle":"default",
+  "navigationBarBackgroundColor": "#6b74f7"
+}

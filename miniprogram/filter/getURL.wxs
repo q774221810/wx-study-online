@@ -1,0 +1,12 @@
+
+var getPercent=function(hasStudy,ctime){
+  if(hasStudy==undefined){
+    return 0
+  }else{
+    return parseInt(hasStudy/ctime*100)
+  }
+ 
+}
+module.exports = {
+ getPercent:getPercent
+};

@@ -1,0 +1,149 @@
+/* miniprogram/page/index/pages/course/course.wxss */
+.img {
+  width: 750rpx;
+  height: 441rpx;
+}
+
+.swiper-tab {
+  width: 100%;
+  border-bottom: 2rpx solid #ccc;
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+  display: flex;
+  flex-flow: row;
+  font-size: 35rpx;
+  color: #a5a5a5;
+  background-color: white;
+}
+
+.swiper-tab-item {
+  flex: 1;
+}
+
+.active {
+  color: black;
+  font-size: 40rpx;
+  font-weight:500;
+  /* border-bottom: 4rpx solid #F65959; */
+  position: relative;
+}
+
+.active::after {
+  content: " ";
+  width: 30%;
+  height: 10%;
+  border-radius:30% ;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  background:#6b74f7;
+  transform: translateX(-50%);
+}
+.back{
+  padding:10rpx 20rpx 0 20rpx;background-color: white;
+}
+.title{
+  font-size: 50rpx;
+}
+.title2{
+  font-size:40rpx
+}
+.title3{
+  font-size: 30rpx;
+}
+.title4{
+  font-size: 25rpx;
+}
+.grey{
+ color: #b8b8b8;
+}
+.deepgrey{
+  color:#727272
+}
+.blue{
+  color: #6b74f7;
+}
+.break{
+  overflow-wrap: break-word
+}
+.rate{
+  color: #b8b8b8;
+  height: 88rpx;
+  background-color: white;
+  position: relative;
+}
+.star{
+  height: 50rpx;
+}
+.littlestar{
+  height: 40rpx;
+}
+.ratetext{
+ margin-left: 20px;
+ font-size: 30rpx;
+}
+
+.cintrodue{
+  margin-top: 10rpx;
+}
+.cdetail{
+ word-wrap: break-word;
+ font-size: 35rpx;
+}
+.cellgroup{
+  background-color: #f6f6f6 !important;
+  height: 100rpx;
+}
+.cell{
+  height: 100rpx;
+}
+.celltitle{
+  font-size: 35rpx;
+}
+.userstar{
+  height: 80rpx;
+  
+}
+.flexSpaceBet{
+  display: flex;
+  justify-content: space-between;
+}
+.flexrow{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.stargroup{
+  width: 200rpx;
+
+}
+.starprogress{
+  width: 250rpx;
+
+  
+}
+.buttomview{
+  position: fixed;
+  bottom: 0;
+  border-top:1px solid #b8b8b8;
+}
+.buttom{
+  height: 100rpx;
+  width: 750rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+.wantStudy{
+  margin-right: 40rpx;
+}
+.btn{
+  background-color: #ff7f27;
+  border-radius:50rpx ;
+  color: white;
+  font-weight: normal;
+  font-size: 30rpx;
+  line-height: 35rpx;
+}

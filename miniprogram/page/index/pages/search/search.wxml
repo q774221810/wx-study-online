@@ -1,2 +1,21 @@
 <!--miniprogram/page/index/pages/search/search.wxml-->
-<mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+<van-search value="{{ keyWord }}" label="课程" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange" bind:search="onSearch">
+	<view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+<view class="courseview">
+	<view wx:for="{{course}}" wx:key="index" wx:for-item="course">
+		<navigator url="{{'/page/index/pages/course/course?cno='+course._cno}}" hover-class="none">
+			<view class="course">
+				<image src="{{'https://7975-yun-in796-1300055920.tcb.qcloud.la/courseimg/'+course._cno+'.jpg'}}" class="sortimg"></image>
+				<view class="coursedetail">
+					<view class="coursename">{{course.cname}}</view>
+					<view class="school">{{course.school}}</view>
+					<view class="number"><text style="margin-left:50rpx;">{{course.people}}</text>
+						<view class="time">{{course.ctime}}学时</view>
+					</view>
+				</view>
+			</view>
+		</navigator>
+		<van-divider />
+	</view>
+</view>

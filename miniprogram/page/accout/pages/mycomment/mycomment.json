@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-rate": "@vant/weapp/rate/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-divider": "@vant/weapp/divider/index"
+  },
+  "navigationStyle":"default",
+  "navigationBarBackgroundColor": "#6b74f7",
+  "navigationBarTitleText": "我的评论"
+}
