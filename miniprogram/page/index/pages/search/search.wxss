@@ -1,0 +1,68 @@
+/* miniprogram/page/index/pages/search/search.wxss */
+.sortcourse{
+  background-color: white;
+  color: rgb(111, 111, 111);
+  font-size: 30rpx;
+
+}
+.sortcoursename{
+  margin: 20rpx;
+  display: inline-block;
+}
+.title3{
+  font-size: 35rpx!important;
+}
+.number{
+  background-image: url("data:image/svg+xml,%3Csvg t='1587026638007' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='1774' width='200' height='200'%3E%3Cpath d='M1010.688 747.52c-11.264-89.088-175.104-131.072-224.256-173.056-6.144-5.12-9.216-20.48-9.216-25.6 0-22.528 5.12-30.72 5.12-30.72s88.064-59.392 86.016-207.872c-2.048-63.488-39.936-176.128-153.6-176.128h-6.144c-24.576 0-46.08 3.072-63.488 13.312 38.912 98.304 51.2 264.192-69.632 354.304-53.248 72.704 112.64 121.856 88.064 109.568 146.432 69.632 185.344 122.88 196.608 178.176 9.216 46.08 14.336 74.752 14.336 74.752s96.256-3.072 138.24-39.936c-1.024-27.648 4.096-51.2-2.048-76.8zM496.64 577.536c-7.168-6.144-11.264-25.6-11.264-31.744 0-28.672 7.168-37.888 7.168-37.888s117.76-62.464 115.712-258.048C605.184 171.008 549.888 30.72 409.6 30.72h-8.192c-146.432 0-194.56 144.384-197.632 223.232-2.048 185.344 114.688 253.952 114.688 253.952s13.312 15.36 13.312 44.032c0 6.144-10.24 19.456-17.408 25.6-60.416 51.2-277.504 102.4-290.816 212.992-11.264 47.104 4.096 136.192 138.24 150.528 59.392 6.144 139.264 15.36 246.784 13.312 392.192-8.192 394.24-102.4 379.904-161.792-13.312-110.592-231.424-163.84-291.84-215.04z' fill='%238363FF' p-id='1775'%3E%3C/path%3E%3C/svg%3E");
+  width:38rpx ;
+  height: 38rpx;
+  background-size: cover;
+  color:#666;
+  font-size: 30rpx;
+  position: absolute;
+  bottom:0;
+}
+.courseview{
+  width: 730rpx;
+  margin:0 10rpx 0 10rpx;
+ background-color: white;
+ border-radius: 30rpx;
+}
+.course{
+  display: flex;
+  align-items: flex-start;
+  width: 730rpx;
+  height:250rpx ;
+}
+.coursedetail{
+  height:200rpx;
+  margin:30rpx 10rpx 0 0 ;
+  position: relative;
+  width: 350rpx;
+}
+.coursename{
+  font-size: 35rpx;
+  word-break:break-all;
+  font-weight: 600;
+}
+.school{
+  margin-top: 10rpx;
+  font-size:30rpx;
+  color:#666;
+}
+.sortimg{
+  width: 340rpx;
+  height: 200rpx;
+  margin: 30rpx 20rpx 30rpx 20rpx;
+}
+.time{
+  position: absolute;
+  bottom: -1rpx;
+  left: 200rpx;
+  width: 200rpx;
+  color: #6b74f7;
+  font-size: 30rpx;
+}
+.clickactive{
+  color: #6b74f7;
+}
